@@ -1,3 +1,14 @@
+# Install libusb and libusb-compat (OSX Users)
+
+Before using this library on OSX, you'll need to install the libusb and libusb-compat libraries.
+
+This is easily done using the [Homebrew](http://brew.sh/) OSX package manager.
+(Other OSes will need similar installation using their respective package managers)
+
+```bash
+brew install libusb libusb-compat
+```
+
 # blink1
 --
     import "github.com/hink/go-blink1"
