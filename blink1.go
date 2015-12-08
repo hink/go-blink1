@@ -79,7 +79,7 @@ func (b *Device) RunPattern(pattern *Pattern) (err error) {
 		pattern.Repeat = 0
 	}
 
-	for i := 0; i <= pattern.Repeat; i++ {
+	for i := 0; i <= int(pattern.Repeat); i++ {
 		for _, state := range pattern.States {
 			err = b.SetState(state)
 			if err != nil {
