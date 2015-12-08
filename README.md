@@ -13,52 +13,6 @@ brew install libusb libusb-compat
 --
     import "github.com/hink/go-blink1"
 
-## Example
-
-```go
-package main
-
-import (
-	"time"
-
-	"github.com/hink/go-blink1"
-)
-
-func main() {
-
-	blink, err := blink1.OpenNextDevice()
-	if err != nil {
-		panic(err)
-	}
-
-	ms250 := time.Duration(250) * time.Millisecond
-	pattern1 := &blink1.Pattern{
-		Repeat: 3,
-		States: []blink1.State{
-			blink1.State{
-				FadeTime: ms250,
-				Duration: ms250,
-				Red:      255,
-			},
-			blink1.State{
-				FadeTime: ms250,
-				Duration: ms250,
-			},
-			blink1.State{
-				FadeTime: ms250,
-				Duration: ms250,
-				Blue:     255,
-			},
-		},
-	}
-
-	err = blink.RunPattern(pattern1)
-	if err != nil {
-		panic(err)
-	}
-}
-
-```
 
 ## Usage
 
@@ -119,7 +73,7 @@ SetState sets the blink(1) to a specific state
 
 ```go
 type Pattern struct {
-	Repeat      int           // How many times to repeat
+	Repeat      uint          // How many times to repeat
 	RepeatDelay time.Duration // Delay between repeats
 	States      []State       // Slice of states to execute in pattern
 }
@@ -131,10 +85,10 @@ Pattern is a Blink(1) blink pattern
 
 ```go
 type State struct {
-	Red      int           // Red value 0-255
-	Green    int           // Green value 0-255
-	Blue     int           // Blue value 0-255
-	Normal   int           // Normal value 0-255
+	Red      uint8         // Red value 0-255
+	Green    uint8         // Green value 0-255
+	Blue     uint8         // Blue value 0-255
+	Normal   uint8         // Normal value 0-255
 	FadeTime time.Duration // Fadetime to state
 	Duration time.Duration // Duration of state after FadeTime
 }
