@@ -55,6 +55,7 @@ func OpenNextDevice() (device *Device, err error) {
 
 // Close communication channel to Blink(1)
 func (b *Device) Close() {
+	delete(openDevices, b.Device.Device)
 	_ = b.Device.Close()
 }
 
