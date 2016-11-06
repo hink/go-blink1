@@ -12,7 +12,7 @@ import (
 	"github.com/hink/go-blink1/libusb"
 )
 
-func fadeToRgbBlink1(device *Device, fadeTime time.Duration, red, green, blue, normal uint8) (bytesWritten int) {
-	bytesWritten = libusb.SendBlink1Command(device.Device, toMs(fadeTime), red, blue, green, normal)
+func fadeToRgbBlink1(device *Device, fadeTime time.Duration, red, green, blue, led uint8) (bytesWritten int) {
+	bytesWritten = libusb.SendBlink1Command(device.Device, toMs(fadeTime), red, blue, green, led)
 	return
 }

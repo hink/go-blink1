@@ -88,10 +88,19 @@ type State struct {
 	Red      uint8         // Red value 0-255
 	Green    uint8         // Green value 0-255
 	Blue     uint8         // Blue value 0-255
-	Normal   uint8         // Normal value 0-255
+	LED      uint8         // which LED to address (0=all, 1=1st LED, 2=2nd LED)
 	FadeTime time.Duration // Fadetime to state
 	Duration time.Duration // Duration of state after FadeTime
 }
 ```
 
 State is a Blink(1) light state
+
+```
+const (
+	LEDAll uint8 = iota
+	LED1
+	LED2
+)
+```
+LED helper constants, used to target specific LED's on the sides of Blink(1).
