@@ -62,7 +62,7 @@ func (b *Device) Close() {
 // SetState sets the blink(1) to a specific state
 func (b *Device) SetState(state State) (err error) {
 	b.CurrentState = state
-	bytesWritten := fadeToRgbBlink1(b, state.FadeTime, state.Red, state.Green, state.Blue, state.Normal)
+	bytesWritten := fadeToRgbBlink1(b, state.FadeTime, state.Red, state.Green, state.Blue, state.LED)
 	if bytesWritten <= 0 {
 		err = errors.New("Unable to write to blink(1)")
 	}

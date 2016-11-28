@@ -12,11 +12,11 @@ const (
 	USB_HID_REPORT_TYPE_FEATURE = 3
 )
 
-func SendBlink1Command(device *Device, fadeTime int, red, blue, green, normal uint8) int {
+func SendBlink1Command(device *Device, fadeTime int, red, blue, green, led uint8) int {
 	dms := fadeTime / 10
 
 	data := []byte{
-		'0', 'c', byte(red), byte(green), byte(blue), byte(dms >> 8), byte(dms % 127), byte(normal),
+		'0', 'c', byte(red), byte(green), byte(blue), byte(dms >> 8), byte(dms % 127), byte(led),
 	}
 
 	//reportID := data[1]
