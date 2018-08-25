@@ -107,3 +107,26 @@ const (
 )
 ```
 LED helper constants, used to target specific LED's on the sides of Blink(1).
+
+## Example Usage
+```go
+package main
+
+import "github.com/hink/go-blink1"
+
+func main() {
+
+	device, err := blink1.OpenNextDevice()
+	defer device.Close()
+
+	if err != nil {
+		panic(err)
+	}
+
+	red := blink1.State{
+		Red: 2,
+	}
+
+	device.SetState(red)
+}
+```
