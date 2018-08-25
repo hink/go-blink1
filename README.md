@@ -10,8 +10,11 @@ brew install libusb libusb-compat
 ```
 
 # blink1
---
-    import "github.com/hink/go-blink1"
+
+## Install
+```bash
+$ go get github.com/hink/go-blink1
+```
 
 
 ## Usage
