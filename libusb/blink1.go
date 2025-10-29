@@ -16,15 +16,15 @@ func SendBlink1Command(device *Device, fadeTime int, red, blue, green, led uint8
 	dms := fadeTime / 10
 
 	data := []byte{
-		'0', 'c', byte(red), byte(green), byte(blue), byte(dms >> 8), byte(dms % 127), byte(led),
+		1, 'c', byte(red), byte(green), byte(blue), byte(dms >> 8), byte(dms % 127), byte(led), 0,
 	}
 
-	//reportID := data[1]
+	reportID := data[0]
 
 	return int(C.usb_control_msg(device.handle,
 		C.int(USB_TYPE_CLASS|C.USB_RECIP_INTERFACE|C.USB_ENDPOINT_OUT),
 		C.int(USBRQ_HID_SET_REPORT),
-		C.int(USB_HID_REPORT_TYPE_FEATURE<<8|('c'&0xff)),
+		C.int(USB_HID_REPORT_TYPE_FEATURE<<8 | int(reportID)),
 		C.int(0),
 		(*C.char)(unsafe.Pointer(&data[0])),
 		C.int(len(data)),
